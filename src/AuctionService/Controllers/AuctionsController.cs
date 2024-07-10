@@ -4,6 +4,8 @@ using AuctionService.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using MassTransit;
 
 namespace AuctionService.Controllers;
 
@@ -12,15 +14,13 @@ namespace AuctionService.Controllers;
 public class AuctionController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly IAuctionRepository _auctionRepository;
+    private readonly AuctionDbContext _auctionContext;
 
-    public AuctionController(IAuctionRepository auctionRepository, IMapper mapper)
+    public AuctionController(AuctionDbContext auctionContext, IMapper mapper)
     {
-        _auctionRepository = auctionRepository;
+        _auctionContext = auctionContext;
         _mapper = mapper;
     }
-    [HttpGet]
-    public async Task<ActionResult<List<AuctionDto>>> AddAuction(){
-
-    }
+    
 }
+
