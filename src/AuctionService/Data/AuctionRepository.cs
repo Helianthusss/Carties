@@ -1,4 +1,4 @@
-using AuctionService.Data;
+﻿using AuctionService.Data;
 using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
@@ -43,7 +43,7 @@ public class AuctionRepository : IAuctionRepository
 
         if (!string.IsNullOrEmpty(date))
         {
-            query = query.Where(x => x.UpdateAt.CompareTo(DateTime.Parse(date).ToUniversalTime()) > 0);
+            query = query.Where(x => x.UpdatedAt.CompareTo(DateTime.Parse(date).ToUniversalTime()) > 0);
         }
 
         return await query.ProjectTo<AuctionDto>(_mapper.ConfigurationProvider).ToListAsync();
