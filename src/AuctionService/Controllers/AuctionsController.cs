@@ -39,7 +39,6 @@ public class AuctionController : ControllerBase
 
         return auction;
     }
-    [HttpPost]
     [Authorize]
     [HttpPost]
     public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
